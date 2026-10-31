@@ -255,9 +255,10 @@ function GodotSampleDriver(audioContext, positionWorkletPath) {
 			/** @type {number} */ loopEnd: options.loopEnd ?? 0,
 			/** @type {number} */ length: sourceBuffer.length,
 		};
-		// Returns the buffer itself, without copying it: audio buffers are only
-		// ever read from once registered, so all source nodes can share it.
-		/** @return {!AudioBuffer} */
+		/**
+		 * The same AudioBuffer can be used by multiple AudioBufferSourceNodes.
+		 * @return {!AudioBuffer}
+		 */
 		stream.getBuffer = function () {
 			return sourceBuffer;
 		};
